@@ -7,20 +7,19 @@ on:
 permissions:
   contents: read
   pages: write
-  id-token: write 
+  id-token: write
+
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
 
 jobs:
   deploy:
     name: Test Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: download
-        uses: actions/checkout@v4
-        
-      - name: deploy
-        uses: actions/deploy-pages@v4
+    - name: download
+      uses: actions/checkout@v4
 
-
-
-
-
+    - name: deploy
+      uses: actions/deploy-pages@v4
